@@ -17,11 +17,14 @@
  */
 
  #include <string>
+ #include <vector>
 
  #pragma once
 
  namespace SpaceQuest
  {
+    class MapLocation;
+
     enum LocationType
     {
         PLANET,
@@ -48,6 +51,12 @@
         int y;
     };
 
+    struct TransportLink
+    {
+        SpaceQuest::MapLocation *destination;
+        int distance;
+    };
+
     class MapLocation
     {
     private:
@@ -59,6 +68,8 @@
         bool hasMarket;
         bool hasShipyard;
         bool hasOutfitting;
+
+        std::vector<SpaceQuest::TransportLink> transportLinks;
 
     public:
         MapLocation(int x, int y, std::string locationName, std::string locationDescription, SpaceQuest::LocationType locationType, SpaceQuest::EconomyType economyType, bool hasMarket, bool hasShipyard, bool hasOutfitting);
@@ -73,5 +84,7 @@
         bool GetHasMarket();
         bool GetHasShipyard();
         bool GetHasOutfitting();
+        std::vector<SpaceQuest::TransportLink> GetTransportLinks();
+        void addTransportLink(SpaceQuest::MapLocation *destination, int distance);
     };
  }

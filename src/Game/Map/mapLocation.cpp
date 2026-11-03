@@ -102,3 +102,16 @@ bool SpaceQuest::MapLocation::GetHasOutfitting()
 {
     return(hasOutfitting);
 }
+
+std::vector<SpaceQuest::TransportLink> SpaceQuest::MapLocation::GetTransportLinks()
+{
+    return(transportLinks);
+}
+
+void SpaceQuest::MapLocation::addTransportLink(SpaceQuest::MapLocation *destination, int distance)
+{
+    SpaceQuest::TransportLink newLink;
+    newLink.destination = destination;
+    newLink.distance = distance;
+    transportLinks.push_back(newLink);
+}

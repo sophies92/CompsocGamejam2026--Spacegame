@@ -74,7 +74,6 @@ void SpaceQuest::Game::CreateLocations()
         true,
         true
     );
-    allLocations.emplace("New London", newLondonLocation);
 
     SpaceQuest::MapLocation *kentResearchLocation = new SpaceQuest::MapLocation(
         49, 49,
@@ -86,6 +85,11 @@ void SpaceQuest::Game::CreateLocations()
         false,
         false
     );
+
+    newLondonLocation->addTransportLink(kentResearchLocation, 1);
+    allLocations.emplace("New London", newLondonLocation);
+
+    kentResearchLocation->addTransportLink(newLondonLocation, 1);
     allLocations.emplace("Kent Research Station", kentResearchLocation);
 }
 
@@ -321,6 +325,23 @@ void SpaceQuest::Game::RunGameloop()
                 {
                     case '1':
                         ClearScreen();
+                        PrintText("Possible Destinations:\n");
+                        for(int i = 0; i < currentLocation->GetTransportLinks().size(); i++)
+                        {
+                            PrintText(std::to_string(i));
+                            PrintText(" - ");
+                            PrintText(currentLocation->GetTransportLinks().at(i).destination->GetName());
+                            PrintText(": ");
+                            PrintText(std::to_string(currentLocation->GetTransportLinks().at(i).distance));
+                            PrintText("LY");
+                            PrintText("\n");
+
+                            c = GetCinInput();
+                            switch(c)
+                            {
+                                
+                            }
+                        }
                     break;
 
                     case '2':
