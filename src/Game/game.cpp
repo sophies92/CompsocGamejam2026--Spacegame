@@ -65,6 +65,7 @@ char SpaceQuest::Game::GetCinInput()
 void SpaceQuest::Game::CreateLocations()
 {
     SpaceQuest::MapLocation *newLondonLocation = new SpaceQuest::MapLocation(
+        50, 50,
         "New London",
         "Welcome to New London", 
         SpaceQuest::LocationType::PLANET, 
@@ -76,6 +77,7 @@ void SpaceQuest::Game::CreateLocations()
     allLocations.emplace("New London", newLondonLocation);
 
     SpaceQuest::MapLocation *kentResearchLocation = new SpaceQuest::MapLocation(
+        49, 49,
         "Kent Research Station",
         "This was the first research station established after the Earth was evacuated.",
         SpaceQuest::LocationType::STATION,

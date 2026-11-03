@@ -42,9 +42,16 @@
         SERVICE
     };
 
+    struct GalacticCoordinates
+    {
+        int x;
+        int y;
+    };
+
     class MapLocation
     {
     private:
+        SpaceQuest::GalacticCoordinates galacticCoordinates;
         std::string locationName;
         std::string locationDescription;
         SpaceQuest::LocationType locationType;
@@ -54,9 +61,10 @@
         bool hasOutfitting;
 
     public:
-        MapLocation(std::string locationName, std::string locationDescription, SpaceQuest::LocationType locationType, SpaceQuest::EconomyType economyType, bool hasMarket, bool hasShipyard, bool hasOutfitting);
+        MapLocation(int x, int y, std::string locationName, std::string locationDescription, SpaceQuest::LocationType locationType, SpaceQuest::EconomyType economyType, bool hasMarket, bool hasShipyard, bool hasOutfitting);
         ~MapLocation();
 
+        SpaceQuest::GalacticCoordinates GetGalacticCoordinates();
         std::string GetName();
         std::string GetDescription();
         SpaceQuest::LocationType GetLocationType();

@@ -18,8 +18,10 @@
 
  #include "mapLocation.h"
 
-SpaceQuest::MapLocation::MapLocation(std::string locationName, std::string locationDescription, SpaceQuest::LocationType locationType, SpaceQuest::EconomyType economyType, bool hasMarket, bool hasShipyard, bool hasOutfitting)
+SpaceQuest::MapLocation::MapLocation(int x, int y, std::string locationName, std::string locationDescription, SpaceQuest::LocationType locationType, SpaceQuest::EconomyType economyType, bool hasMarket, bool hasShipyard, bool hasOutfitting)
 {
+    this->galacticCoordinates.x = x;
+    this->galacticCoordinates.y = y;
     this->locationName = locationName;
     this->locationDescription = locationDescription;
     this->locationType = locationType;
@@ -31,6 +33,11 @@ SpaceQuest::MapLocation::MapLocation(std::string locationName, std::string locat
 
 SpaceQuest::MapLocation::~MapLocation()
 {
+}
+
+SpaceQuest::GalacticCoordinates SpaceQuest::MapLocation::GetGalacticCoordinates()
+{
+    return(galacticCoordinates);
 }
 
 std::string SpaceQuest::MapLocation::GetName()
