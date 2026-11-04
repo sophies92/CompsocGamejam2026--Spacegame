@@ -383,7 +383,8 @@ void SpaceQuest::Game::RunGameloop()
             break; // End SHIP_MENU
 
             case SpaceQuest::Gamestate::SPACE_MENU:
-
+                ClearScreen();
+                PrintText("Current Location: Deep Space\n");
             break; // End SPACE_MENU
         } // End Switch
     }
