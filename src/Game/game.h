@@ -56,6 +56,9 @@ private:
     SpaceQuest::MapLocation *currentLocation;
     SpaceQuest::Ship *currentShip;
 
+    SpaceQuest::MapLocation *destination;
+    int destinationDistanceRemaining;
+
 public:
     Game();
     ~Game();

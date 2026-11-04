@@ -337,9 +337,11 @@ void SpaceQuest::Game::RunGameloop()
                             PrintText("\n");
 
                             c = GetCinInput();
-                            switch(c)
+                            if(c - '0' >= 0 && c - '0' < currentLocation->GetTransportLinks().size())
                             {
-                                
+                                destination = currentLocation->GetTransportLinks().at(c - '0').destination;
+                                destinationDistanceRemaining = currentLocation->GetTransportLinks().at(c - '0').distance;
+                                SetGamestate(SpaceQuest::Gamestate::SPACE_MENU);
                             }
                         }
                     break;
